@@ -26,17 +26,18 @@ for (let i = 0; i < 5; i++) {
 
 // Добавляем обработчик события при нажатии на каждую кнопку
 showTextButtons.forEach(function(button, index) {
-  button.addEventListener('click', function() {
-    // Закрываем все тексты перед открытием текущего
-    hiddenTexts.forEach(function(text) {
-      text.style.display = 'none';
+    button.addEventListener('click', function() {
+      // Если текущий текст виден, скрываем его
+      if (hiddenTexts[index].style.display === 'block') {
+        hiddenTexts[index].style.display = 'none'; // Скрываем текст
+      } else {
+        // Закрываем все тексты перед открытием текущего
+        hiddenTexts.forEach(function(text) {
+          text.style.display = 'none';
+        });
+  
+        // Показываем текущий текст
+        hiddenTexts[index].style.display = 'block';
+      }
     });
-
-    // Переключаем видимость текущего текста
-    if (hiddenTexts[index].style.display === 'none' || hiddenTexts[index].style.display === '') {
-      hiddenTexts[index].style.display = 'block'; // Показываем текст, если он скрыт
-    } else {
-      hiddenTexts[index].style.display = 'none'; // Скрываем текст, если он виден
-    }
   });
-});
