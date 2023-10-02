@@ -178,6 +178,11 @@
         width: 320px;
     }
 
+
+
+    .service {
+        background-size: cover;
+    }
 }
 
 @media(max-width:480px) {
