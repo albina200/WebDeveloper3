@@ -26,13 +26,17 @@ for (let i = 0; i < 5; i++) {
 
 // Добавляем обработчик события при нажатии на каждую кнопку
 showTextButtons.forEach(function(button, index) {
-    button.addEventListener('click', function() {
-      // Переключаем видимость соответствующего текста
-      if (hiddenTexts[index].style.display === 'none' || hiddenTexts[index].style.display === '') {
-        hiddenTexts[index].style.display = 'block'; // Показываем текст, если он скрыт
-      } else {
-        hiddenTexts[index].style.display = 'none'; // Скрываем текст, если он виден
-      }
+  button.addEventListener('click', function() {
+    // Закрываем все тексты перед открытием текущего
+    hiddenTexts.forEach(function(text) {
+      text.style.display = 'none';
     });
-  });
 
+    // Переключаем видимость текущего текста
+    if (hiddenTexts[index].style.display === 'none' || hiddenTexts[index].style.display === '') {
+      hiddenTexts[index].style.display = 'block'; // Показываем текст, если он скрыт
+    } else {
+      hiddenTexts[index].style.display = 'none'; // Скрываем текст, если он виден
+    }
+  });
+});
